@@ -186,11 +186,8 @@
 
             </td> 
             <td class="text-center"> 
-                <a href="(<?php echo $row->id_siswa ?>)" class="btn btn-primary btn-sm">Update</a> 
-                <button onclick="hapus(<?php echo $row->id_siswa ?>)" 
-                    class="btn btn-danger btn-sm">Hapus</button> 
-            </td> 
-
+                <a href="<?php echo base_url('admin/ubah_siswa') ?>" class="btn btn-primary btn-sm">Update</a> 
+                <button onClick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Hapus</button>
         </tr> 
         <?php endforeach ?> 
     </tbody> 

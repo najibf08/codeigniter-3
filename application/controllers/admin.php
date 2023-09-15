@@ -42,7 +42,7 @@ if ($this->session->userdata('logged_in')!=true) {
     $this->m_model->tambah_data('siswa', $data); 
     redirect(base_url('admin/siswa')); 
  } 
- public function hapus_siswa() 
+ public function hapus_siswa($id) 
  { 
     $this->m_model->delete('siswa', 'id_siswa', $id); 
     redirect(base_url('admin/siswa')); 

@@ -145,7 +145,7 @@
     <div class="sidenav" id="mySidenav"> 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; tutup</a> 
         <a href="<?php echo base_url('admin') ?>">Beranda</a> 
-        <a href="<?php echo base_url('siswa') ?>">Siswa</a> 
+        <a href="<?php echo base_url('admin/siswa') ?>">Siswa</a> 
     </div> 
  
     <!-- Konten --> 
@@ -157,13 +157,71 @@
                 <thead> 
                     <tr> 
                         <th>No</th> 
-                        <th>Nama Siswa</th> 
+                        <th>Nama</th> 
                         <th>NISN</th> 
                         <th>Gender</th> 
                         <th>Kelas</th> 
+                        <th class="text-center">Aksi</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr> 
-                        <td>1</td> 
-                        <td>najib</td>
+                    <?php $no = 0;
+                    foreach ($siswa as $row): 
+                        $no++ ?> 
+        <tr> 
+            <td> 
+                <?php echo $no ?> 
+            </td> 
+            <td> 
+                <?php echo $row->nama_siswa ?> 
+            </td> 
+            <td> 
+                <?php echo $row->nisn ?> 
+            </td> 
+            <td> 
+                <?php echo $row->gender ?> 
+            </td> 
+            <td> 
+                <?php echo tampil_full_kelas_byid($row->id_kelas) ?> 
+
+            </td> 
+            <td class="text-center"> 
+                <a href="(<?php echo $row->id_siswa ?>)" class="btn btn-primary btn-sm">Update</a> 
+                <button onclick="hapus(<?php echo $row->id_siswa ?>)" 
+                    class="btn btn-danger btn-sm">Hapus</button> 
+            </td> 
+
+        </tr> 
+        <?php endforeach ?> 
+    </tbody> 
+</table> 
+</table> 
+<button class="btn btn-sm btn-warning"><a href="Tambah_siswa" class="btn text-primary">Tambah</a> 
+</button> 
+<script> 
+function hapus(id) { 
+    var yes = confirm('Yakin Di Hapus?'); 
+    if (yes == true) { 
+        window.location.href = "<?php echo base_url('admin/hapus_siswa/')?>" + id; 
+    } 
+} 
+</script> 
+</div> 
+
+</div> 
+<script> 
+function openNav() { 
+document.getElementById("mySidenav").style.width = "250px"; 
+document.getElementsByClassName("content")[0].style.marginLeft = "250px"; 
+} 
+
+function closeNav() { 
+document.getElementById("mySidenav").style.width = "0"; 
+document.getElementsByClassName("content")[0].style.marginLeft = "0"; 
+} 
+</script> 
+</div> 
+
+</body> 
+
+</html>

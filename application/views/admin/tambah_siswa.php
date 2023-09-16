@@ -1,11 +1,10 @@
-<!DOCTYPE html> 
-<html lang="en"> 
- 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Document</title> 
-    <script src="https://cdn.tailwindcss.com"></script> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style> 
     .card { 
         background-color: #20B2AA; 
@@ -15,7 +14,7 @@
         margin: 5px; 
         width: 150px; 
         display: inline-block; 
-        color: white; 
+        color: black; 
         margin-left: 0; 
         transition: margin-left 0.5s; 
     } 
@@ -80,7 +79,8 @@
  
     /* CSS Untuk Konten */ 
     .content { 
- 
+        margin-left: 0; 
+        padding: 20px; 
         transition: margin-left 0.5s; 
     } 
  
@@ -126,34 +126,19 @@
         padding: 20px; 
     } 
     </style> 
-</head> 
- 
-<body> 
- 
-    <div class="navbar"> 
-        <span class="openbtn" onclick="openNav()">&#9776;</span> 
-        <h3 class="text-center text-white">Data Siswa</h3> 
-        <div class="search-container"> 
-            <input type="text" class="search-box" placeholder="Cari..."> 
-            <button type="submit">Cari</button> 
-        </div> 
-    </div> 
- 
-    <!-- Side Navbar (Samping) --> 
-    <div class="sidenav" id="mySidenav"> 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; tutup</a> 
-        <a href="<?php echo base_url('admin') ?>">Beranda</a> 
-        <a href="<?php echo base_url('admin/siswa') ?>">Siswa</a> 
-    </div> 
-    <div class="content"> 
-        <div class="container mt-12"> 
- 
-            <div class="overflow-x-auto"> 
-                <form action="<?php echo base_url('admin/aksi_Tambah_siswa') ?>" enctype="multipart/form-data" 
+</head>
+<body>
+<div class="flex">
+        <div>
+    </div>
+
+            <div class="container mt-12">
+            <div class="overflow-x-auto">
+                    <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" enctype="multipart/form-data" 
                     method="post"> 
                     <div class="max-full rounded border overflow-hidden shadow-lg"> 
                         <div class="px-6 py-4"> 
-                            <p class="text-xl font-bold text-center">Tambah Siswa</p> 
+                            <p class="text-xl font-bold text-center">Ubah Siswa</p> 
                             <div class="grid grid-cols-2 gap-4 mt-5"> 
                                 <div class="mb-4"> 
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="nama"> 
@@ -161,7 +146,7 @@
                                     </label>
                                     <input 
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                                        id="nama" name="nama" type="text" placeholder="Nama"> 
+                                        id="nama" name="nama" type="text" > 
                                 </div> 
                                 <div class="mb-4"> 
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="nisn"> 
@@ -169,7 +154,7 @@
                                     </label> 
                                     <input 
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                                        id="nisn" name="nisn" type="number" placeholder="Nisn"> 
+                                        id="nisn" name="nisn" type="number"> 
                                 </div> 
                                 <div class="mb-4"> 
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="gender"> 
@@ -177,8 +162,10 @@
                                     </label> 
                                     <select name="gender" id="gender" 
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"> 
-                                        <option selected>Pilih Gender</option> 
-                                        <option value="Laki-Laki">Laki-Laki</option> 
+                                       
+                                        
+                                    </option> 
+                                        <option value="Laki-Laki">Laki-Laki</option>  
                                         <option value="Perempuan">Perempuan</option> 
                                     </select> 
                                 </div> 
@@ -188,7 +175,9 @@
                                     </label> 
                                     <select name="kelas" id="kelas" 
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"> 
-                                        <option selected>Pilih Kelas</option> 
+
+                                        
+                                        </option> 
                                         <?php foreach($kelas as $row): ?> 
                                         <option value="<?php echo $row->id ?>"> 
                                             <?php echo $row->tingkat_kelas.' '.$row->jurusan_kelas ?></option> 
@@ -197,27 +186,22 @@
                                 </div> 
                                 <button type="submit" 
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/6"> 
-                                    Tambah 
+                                        Tambah
                                 </button> 
                             </div> 
                         </div> 
                     </div> 
                 </form> 
-            </div> 
-        </div> 
-    </div> 
-    </div> 
-    <script> 
-    function openNav() { 
-        document.getElementById("mySidenav").style.width = "250px"; 
-        document.getElementsByClassName("content")[0].style.marginLeft = "250px"; 
-    } 
- 
-    function closeNav() { 
-        document.getElementById("mySidenav").style.width = "0"; 
-        document.getElementsByClassName("content")[0].style.marginLeft = "0"; 
-    } 
-    </script> 
-</body> 
- 
+<script> 
+function openNav() { 
+document.getElementById("mySidenav").style.width = "250px"; 
+document.getElementsByClassName("content")[0].style.marginLeft = "250px"; 
+} 
+
+function closeNav() { 
+document.getElementById("mySidenav").style.width = "0"; 
+document.getElementsByClassName("content")[0].style.marginLeft = "0"; 
+} 
+</script>
+</body>
 </html>

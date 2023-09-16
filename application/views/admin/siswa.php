@@ -186,14 +186,14 @@
 
             </td> 
             <td class="text-center"> 
-                <a href="<?php echo base_url('admin/ubah_siswa') ?>" class="btn btn-primary btn-sm">Update</a> 
+                <a href="<?php echo base_url('admin/ubah_siswa/').$row->id_siswa; ?>" class="btn btn-primary btn-sm">Update</a> 
                 <button onClick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Hapus</button>
         </tr> 
         <?php endforeach ?> 
     </tbody> 
 </table> 
 </table> 
-<button class="btn btn-sm btn-warning"><a href="Tambah_siswa" class="btn text-primary">Tambah</a> 
+<button class="btn btn-warning"><a href="<?php echo base_url('admin/tambah_siswa') ?>" class="btn btn-sm text-primary">Tambah</a> 
 </button> 
 <script> 
 function hapus(id) { 

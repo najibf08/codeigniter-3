@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> 
+ <!DOCTYPE html> 
 <html lang="en"> 
  
 <head> 
@@ -10,13 +10,10 @@
  
 <body> 
     <h1 class="my-5 fw-bold">selamat datang <?php echo $this->session->userdata('username')?></h1> 
-    <a href="<?php echo base_url('auth/logout');?>" 
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> 
-        logout 
-    </a> 
+     
 </body> 
  
-</html> --> 
+</html> 
 <!DOCTYPE html> 
 <html lang="en"> 
  
@@ -159,6 +156,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; tutup</a> 
         <a href="<?php echo base_url('admin') ?>">Beranda</a> 
         <a href="<?php echo base_url('admin/siswa') ?>">Siswa</a> 
+        <a href="<?php echo base_url('admin/akun') ?>">Akun</a> 
+        <a href="<?php echo base_url('auth/logout');?>" 
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> 
+        logout 
+    </a>
     </div> 
  
     <!-- Konten --> 
@@ -167,23 +169,19 @@
         <div class="card"> 
             <p>Jumlah Kelas</p> 
             <h1>6</h1> 
-            <a href="" target="_blank"class="login-button">Info untuk lebih lanjut</a> 
         </div> 
         <div class="card"> 
             <p>Jumlah Mapel</p> 
             <h1>9</h1> 
-            <a href="" target="_blank" class="login-button">Info untuk lebih lanjut</a> 
         </div> 
         <div class="card"> 
             <p>Jumlah Siswa</p> 
             <h1>4</h1> 
-            <a href="" target="_blank" class="login-button">Info untuk lebih lanjut</a> 
         </div> 
         <div class="card"> 
             <p>Jumlah guru</p> 
             <h1>10</h1> 
-            <a href="" target="_blank" class="login-button">Info untuk lebih lanjut</a> 
-        </div> 
+       </div> 
  
     </div> 
  

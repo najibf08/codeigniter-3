@@ -4,7 +4,7 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Login</title> 
+    <title>Register</title> 
     <link rel="stylesheet" type="text/css" href="style.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
     <style> 
@@ -19,7 +19,8 @@
  
  
     .full-bg { 
-        background-image: url(https://foto.data.kemdikbud.go.id/getImage/69756199/1.jpg); 
+        background-image: url(https://binusasmg.sch.id/wp-content/uploads/2020/04/logotransparanbinus.png
+); 
         background-position: center center; 
         background-size: cover; 
         position: fixed; 
@@ -123,20 +124,28 @@
     <div class="full-bg"> 
         <div class="container"> 
             <div class="card"> 
-                <h2>Login</h2> 
-                <form action="<?php echo base_url(); ?>Auth/aksi_login" method="post"
-> 
+                <h2>Register</h2> 
+                <form action="<?php echo base_url('auth/aksi_register'); ?>" method="post"> 
                     <label for="email">Email</label> 
                     <input type="text" id="email" placeholder="Enter your email" name="email"> 
+ 
+                    <label for="username">Username</label> 
+                    <input type="text" id="username" placeholder="Enter your username" name="username"> 
+ 
                     <label for="password">Password</label> 
                     <input type="password" id="password" placeholder="Enter your password" name="password"> 
-                    <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400" 
-                        style="color:red"><strong>Lupa Password?</strong></a> 
  
-                    <button type="submit">Login</button> 
+                    <label for="role">Role</label> 
+                    <select id="role" name="role" required> 
+                        <option value="admin">Admin</option> 
+                        <option value="user">User</option> 
+                    </select> 
+ 
+ 
+                    <button type="submit">Register</button> 
                 </form> 
                 <p style="text-align: center; margin-top: 10px;"> 
-                    Belum Punya Akun? <a href="<?php echo base_url('auth/register'); ?>">Register</a> 
+                    Sudah punya akun? <a href="<?php echo base_url('auth'); ?>">Register</a> 
                 </p> 
             </div> 
         </div> 

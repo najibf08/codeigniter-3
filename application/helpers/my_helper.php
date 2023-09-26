@@ -1,6 +1,5 @@
 <?php
-// untuk menampilkan tingkat kelas dan jurusan kelas by id
-function tampil_full_kelas_byid($id)
+function tampil_full_kelas_by_id($id)
 {
     $ci =& get_instance();
     $ci->load->database();

@@ -156,12 +156,14 @@
  
                 <thead> 
                     <tr> 
-                        <th>No</th> 
-                        <th>Nama</th> 
-                        <th>NISN</th> 
-                        <th>Gender</th> 
-                        <th>Kelas</th> 
-                        <th class="text-center">Aksi</th> 
+                    <th class="text-left border border-black">No</th>
+                                <th class="text-left border border-black">Foto Siswa</th>
+                                <th class="text-left border border-black">Nama Siswa</th>
+                                <th class="text-left border border-black">NISN</th>
+                                <th class="text-left border border-black">Gender</th>
+                                <th class="text-left border border-black">Kelas</th>
+                                <th class="text-left border border-black">Aksi</th>
+
                     </tr> 
                 </thead> 
                 <tbody> 
@@ -173,6 +175,9 @@
                 <?php echo $no ?> 
             </td> 
             <td> 
+                <img src="<?php echo base_url('images/siswa/' .$row->foto) ?>" alt="" width='50'>
+            </td> 
+            <td> 
                 <?php echo $row->nama_siswa ?> 
             </td> 
             <td> 
@@ -180,9 +185,9 @@
             </td> 
             <td> 
                 <?php echo $row->gender ?> 
-            </td> 
+            </td>
             <td> 
-                <?php echo tampil_full_kelas_byid($row->id_kelas) ?> 
+                <?php echo tampil_full_kelas_by_id($row->id_kelas) ?> 
 
             </td> 
             <td class="text-center"> 

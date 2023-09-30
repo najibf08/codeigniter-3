@@ -127,67 +127,47 @@
     } 
     </style> 
 </head>
-<body>
-<div class="flex">
-        <div>
-    </div>
+<body class="min-vh-100 d-flex align-items-center">
+    <div class='card w-50 m-auto p-3'>
+        <h3 class="text-center">Tambah Data Siswa</h3>
+        <form action="<?php echo base_url(
+            'admin/aksi_tambah_siswa'
+        ); ?>" enctype="multipart/form-data" method="post" class="row">
+            <div class="mb-4">
+                <label for="nama" class="form-label">Nama Siswa</label>
+                <input type="text" placeholder="Nama Siswa" class="form-control" id="nama" name="nama">
+            </div>
+            <div class="mb-4">
+                <label for="nisn" class="form-label">NISN</label>
+                <input type="text" placeholder="NISN" class="form-control" id="nisn" name="nisn">
+            </div>
+            <div class="mb-4">
+                <label for="gender" class="form-label">Gender</label>
+                <select name="gender" class="form-select">
+                    <option selected>Pilih Gender</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="kelas" class="form-label">Kelas</label>
+                <select name="kelas" class="form-select">
+                    <option selected>Pilih Kelas</option>
+                    <?php foreach ($kelas as $row): ?>
+                        <option value="<?php echo $row->id; ?>">
+                            <?php echo $row->tingkat_kelas .
+                                ' ' .
+                                $row->jurusan_kelas; ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="nisn" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="nisn" name="foto">
+                </div>
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 
-            <div class="container mt-12">
-            <div class="overflow-x-auto">
-                    <form action="<?php echo base_url('admin/aksi_tambah_siswa') ?>" enctype="multipart/form-data" 
-                    method="post"> 
-                    <div class="max-full rounded border overflow-hidden shadow-lg"> 
-                        <div class="px-6 py-4"> 
-                            <p class="text-xl font-bold text-center">Ubah Siswa</p> 
-                            <div class="grid grid-cols-2 gap-4 mt-5"> 
-                                <div class="mb-4"> 
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nama"> 
-                                        Nama Siswa 
-                                    </label>
-                                    <input 
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                                        id="nama" name="nama" type="text" > 
-                                </div> 
-                                <div class="mb-4"> 
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nisn"> 
-                                        NISN 
-                                    </label> 
-                                    <input 
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                                        id="nisn" name="nisn" type="number"> 
-                                </div> 
-                                <div class="mb-4"> 
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="gender"> 
-                                        Gender 
-                                    </label> 
-                                    <select name="gender" id="gender" 
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"> 
-                                       
-                                        
-                                    </option> 
-                                        <option value="Laki-Laki">Laki-Laki</option>  
-                                        <option value="Perempuan">Perempuan</option> 
-                                    </select> 
-                                </div> 
-                                <div class="mb-4"> 
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="kelas"> 
-                                        Kelas 
-                                    </label> 
-                                    <select name="kelas" id="kelas" 
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"> 
-
-                                        
-                                        </option> 
-                                        <?php foreach($kelas as $row): ?> 
-                                        <option value="<?php echo $row->id ?>"> 
-                                            <?php echo $row->tingkat_kelas.' '.$row->jurusan_kelas ?></option> 
-                                        <?php endforeach ?> 
-                                    </select> 
-                                </div> 
-                                <button type="submit" 
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/6"> 
-                                        Tambah
-                                </button> 
                             </div> 
                         </div> 
                     </div> 

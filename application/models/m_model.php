@@ -2,37 +2,59 @@
 
 class M_model extends CI_Model
 {
-    function get_data($tabel)
+    function get_data($table)
     {
-        return $this->db->get($tabel);
+        return $this->db->get($table);
     }
 
-    function getwhere($tabel, $data)
+    function getwhere($table, $data)
     {
-        return $this->db->get_where($tabel, $data);
+        return $this->db->get_where($table, $data);
     }
-    public function delete($tabel, $field, $id)
+
+    public function delete($table, $field, $id)
     {
-        $data = $this->db->delete($tabel, array($field => $id));
+        $data = $this->db->delete($table, [$field => $id]);
         return $data;
     }
-    public function tambah_data($tabel, $data)
+
+    public function tambah_data($table, $data)
     {
-        $this->db->insert($tabel, $data);
+        $this->db->insert($table, $data);
         return $this->db->insert_id();
     }
+    public function get_by_id($table, $id_column, $id)
+    {
+        $data = $this->db->where($id_column, $id)->get($table);
+        return $data;
+    }
 
-   public function get_by_id($tabel, $id_column, $id)
-{
-    $data = $this->db->where($id_column, $id)->get($tabel);
-    return $data;
+    public function update($table, $data, $where)
+    {
+        $data = $this->db->update($table, $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function ubah_data($table, $data, $where)
+    {
+        $data = $this->db->update($table, $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function get_siswa_foto_by_id($id_siswa)
+    {
+        $this->db->select('foto');
+        $this->db->from('siswa');
+        $this->db->where('id_siswa', $id_siswa);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+            return $result->foto;
+        } else {
+            return false;
+        }
+    }
 }
 
-public function ubah_data($tabel, $data, $where)
-{
-    $this->db->update($tabel, $data, $where);
-    return $this->db->affected_rows();
-}
-
-}
 ?>

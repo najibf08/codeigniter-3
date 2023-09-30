@@ -49,9 +49,7 @@
                 <option value="Pembayaran Seragam">Pembayaran Seragam</option>
             </select>
             <div class="w-full mt-5 px-3">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </div>
         </div>
     </form>

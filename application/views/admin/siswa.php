@@ -1,229 +1,99 @@
-<!DOCTYPE html> 
-<html lang="en"> 
- 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Dashboard</title> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
-    <style> 
-    .card { 
-        background-color: #20B2AA; 
-        border: 1px solid #ccc; 
-        border-radius: 2px; 
-        padding: 10px; 
-        margin: 5px; 
-        width: 150px; 
-        display: inline-block; 
-        color: white; 
-        margin-left: 0; 
-        transition: margin-left 0.5s; 
-    } 
- 
- 
-    body { 
-        font-family: Arial, sans-serif; 
-        margin: 0; 
-        padding: 0; 
-    } 
- 
-    .login-button { 
-        display: inline-block; 
-        padding: 10px 20px; 
-        background-color: #008B8B; 
-        color: #fff; 
- 
-        text-decoration: none; 
-        text-align: center; 
-        font-size: 10px; 
-        border: none; 
- 
-        width: 100px; 
-    } 
- 
-    .navbar { 
-        background-color: #333; 
-        color: #fff; 
-        padding: 10px; 
-        position: fixed; 
-        top: 0; 
-        width: 100%; 
-        z-index: 1; 
-    } 
- 
-    /* CSS Untuk Side Navbar (Samping) */ 
-    .sidenav { 
-        height: 100%; 
-        width: 0; 
-        position: fixed; 
-        z-index: 2; 
-        top: 0; 
-        left: 0; 
-        background-color: #333; 
-        overflow-x: hidden; 
-        transition: 0.5s; 
-        padding-top: 0px; 
-    } 
- 
-    .sidenav a { 
-        padding: 5px 10px; 
-        text-decoration: none; 
-        font-size: 18px; 
-        color: #fff; 
-        display: block; 
-        transition: 0.3s; 
-    } 
- 
-    .sidenav a:hover { 
-        background-color: #555; 
-    } 
- 
-    /* CSS Untuk Konten */ 
-    .content { 
-        margin-left: 0; 
-        padding: 20px; 
-        transition: margin-left 0.5s; 
-    } 
- 
-    /* CSS Umum */ 
-    body { 
-        font-family: Arial, sans-serif; 
-        margin: 0; 
-        padding: 0; 
-    } 
- 
-    /* Tombol untuk membuka side navbar */ 
-    .openbtn { 
-        background-color: #333; 
-        color: #fff; 
-        padding: 10px 15px; 
-        border: none; 
-        cursor: pointer; 
-        margin-left: 0; 
-        transition: margin-left 0.5s; 
-    } 
- 
-    .openbtn:hover { 
-        background-color: #555; 
-    } 
- 
-    .search-container { 
-        float: right; 
-    } 
- 
-    .search-box { 
-        padding: 2px; 
-        border: none; 
-        border-radius: 5px; 
-    } 
- 
-    .navbar h1 { 
-        margin: 0; 
-    } 
- 
-    .table-container { 
-        margin-top: 80px; 
-        /* Membuat ruang antara navbar dan tabel */ 
-        padding: 20px; 
-    } 
-    </style> 
-</head> 
- 
-<body> 
- 
-    <div class="navbar"> 
-        <span class="openbtn" onclick="openNav()">&#9776;</span> 
-        <h3 class="text-center text-white">Data Siswa</h3> 
-        <div class="search-container"> 
-            <input type="text" class="search-box" placeholder="Cari..."> 
-            <button type="submit">Cari</button> 
-        </div> 
-    </div> 
- 
-    <!-- Side Navbar (Samping) --> 
-    <div class="sidenav" id="mySidenav"> 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; tutup</a> 
-        <a href="<?php echo base_url('admin') ?>">Beranda</a> 
-        <a href="<?php echo base_url('admin/siswa') ?>">Siswa</a> 
-    </div> 
- 
-    <!-- Konten --> 
-    <!-- Tabel --> 
-    <div class="content"> 
-        <div class="container table-container"> 
-            <table class="table table-striped"> 
- 
-                <thead> 
-                    <tr> 
-                    <th class="text-left border border-black">No</th>
-                                <th class="text-left border border-black">Foto Siswa</th>
-                                <th class="text-left border border-black">Nama Siswa</th>
-                                <th class="text-left border border-black">NISN</th>
-                                <th class="text-left border border-black">Gender</th>
-                                <th class="text-left border border-black">Kelas</th>
-                                <th class="text-left border border-black">Aksi</th>
+<!DOCTYPE html>
+<html lang="en">
 
-                    </tr> 
-                </thead> 
-                <tbody> 
-                    <?php $no = 0;
-                    foreach ($siswa as $row): 
-                        $no++ ?> 
-        <tr> 
-            <td> 
-                <?php echo $no ?> 
-            </td> 
-            <td> 
-                <img src="<?php echo base_url('images/siswa/' .$row->foto) ?>" alt="" width='50'>
-            </td> 
-            <td> 
-                <?php echo $row->nama_siswa ?> 
-            </td> 
-            <td> 
-                <?php echo $row->nisn ?> 
-            </td> 
-            <td> 
-                <?php echo $row->gender ?> 
-            </td>
-            <td> 
-                <?php echo tampil_full_kelas_by_id($row->id_kelas) ?> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-            </td> 
-            <td class="text-center"> 
-                <a href="<?php echo base_url('admin/ubah_siswa/').$row->id_siswa; ?>" class="btn btn-primary btn-sm">Update</a> 
-                <button onClick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-sm btn-danger">Hapus</button>
-        </tr> 
-        <?php endforeach ?> 
-    </tbody> 
-</table> 
-</table> 
-<button class="btn btn-warning"><a href="<?php echo base_url('admin/tambah_siswa') ?>" class="btn btn-sm text-primary">Tambah</a> 
-</button> 
-<script> 
-function hapus(id) { 
-    var yes = confirm('Yakin Di Hapus?'); 
-    if (yes == true) { 
-        window.location.href = "<?php echo base_url('admin/hapus_siswa/')?>" + id; 
-    } 
-} 
-</script> 
-</div> 
+<body>
 
-</div> 
-<script> 
-function openNav() { 
-document.getElementById("mySidenav").style.width = "250px"; 
-document.getElementsByClassName("content")[0].style.marginLeft = "250px"; 
-} 
+    <main class="flex-1 overflow-x-hidden overflow-y-auto ">
+        <div class="container mx-auto px-6 py-8">
+            <!-- Table -->
+            <div class="bg-white p-6 rounded-lg" style="margin-left: 300px;">
+                <a href="<?php echo base_url(
+                    'admin/tambah_siswa'
+                ); ?>" class="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+                <a href="<?php echo base_url(
+                    'admin/export'
+                ); ?>" class="bg-blue-500 hover:bg-blue-700 ml-2 text-white font-bold py-2 px-4 rounded">
+                    <i class="fa-solid fa-file-export"></i>
+                </a>
+                <table class="min-w-full mt-3">
+                    <thead>
+                        <tr>
+                            <th class="text-left border border-black">No</th>
+                            <th class="text-left border border-black">Foto Siswa</th>
+                            <th class="text-left border border-black">Nama Siswa</th>
+                            <th class="text-left border border-black">NISN</th>
+                            <th class="text-left border border-black">Gender</th>
+                            <th class="text-left border border-black">Kelas</th>
+                            <th class="text-left border border-black">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($siswa as $row):
+                            $no++; ?>
+                        <tr>
+                            <td class="border border-black"><?php echo $no; ?></td>
+                            <td class="border border-black"><img src="<?php echo base_url(
+                                'images/siswa/' . $row->foto
+                            ); ?>" width="50" alt=""></td>
+                            <td class="border border-black"><?php echo $row->nama_siswa; ?></td>
+                            <td class="border border-black"><?php echo $row->nisn; ?></td>
+                            <td class="border border-black"><?php echo $row->gender; ?></td>
+                            <td class="border border-black"><?php echo tampil_full_kelas_by_id(
+                                $row->id_kelas
+                            ); ?></td>
+                            <td class="text-center border border-black">
+                                <button onclick="hapus(<?php echo $row->id_siswa; ?>)"
+                                    class="bg-red-700   hover:bg-red-900   text-white font-bold py-2 px-4 rounded">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <a href="<?php echo base_url(
+                                    'admin/ubah_siswa/'
+                                ) . $row->id_siswa; ?>"
+                                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                        endforeach;
+                        ?>
+                    </tbody>
+                </table>
 
-function closeNav() { 
-document.getElementById("mySidenav").style.width = "0"; 
-document.getElementsByClassName("content")[0].style.marginLeft = "0"; 
-} 
-</script> 
-</div> 
+                <form class="mt-5" method="post" enctype="multipart/form-data"
+                    action="<?php echo base_url('admin/import'); ?>">
+                    <input type="file" name="file" />
+                    <input type="submit" name="import"
+                        class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
+                        value="Import" />
 
-</body> 
-
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+    function hapus(id) {
+        var yes = confirm('Yakin Dex?');
+        if (yes == true) {
+            window.location.href = "<?php echo base_url(
+                'admin/hapus_siswa/'
+            ); ?>" + id;
+        }
+    }
+    </script>
+</body>
 </html>

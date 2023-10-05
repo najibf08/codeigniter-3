@@ -24,5 +24,4 @@ function nama_siswa($id)
         return $stmt;
     }
 }
-
 ?>

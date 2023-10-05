@@ -18,9 +18,13 @@
                 <div class="bg-white p-6 rounded-lg" style="margin-left: 300px;">
                   <a href="<?php echo base_url(
                       'keuangan/tambah_pembayaran'
-                  ); ?>"  class="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">
-                  <i class="fa-solid fa-plus"></i>
+                  ); ?>"  <button class="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">TAMBAH</button>
                   </a>
+                  <a href="<?php echo base_url(
+                      'keuangan/export'
+                  ); ?>" <button class="bg-emerald-950	ml-3 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">EXPORT</button>
+                       </a>
+
                     <table class="min-w-full mt-3">
                         <thead>
                             <tr>
@@ -61,10 +65,18 @@
                           ?>
                         </tbody>
                     </table>
+                    <form class="mt-5" method="post" enctype="multipart/form-data"
+                    action="<?php echo base_url('keuangan/import'); ?>">
+                    <input type="file" name="file" />
+                    <input type="submit" name="import"
+                        class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
+                        value="Import" />
+
+                </form>
+
                 </div>
             </div>
-        </main>
-        <script>
+      <script>
         function hapus(id) {
         var yes = confirm('Yakin Dex?');
         if (yes == true) {

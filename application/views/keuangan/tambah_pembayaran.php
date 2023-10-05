@@ -49,8 +49,9 @@
                 <option value="Pembayaran Seragam">Pembayaran Seragam</option>
             </select>
             <div class="w-full mt-5 px-3">
-            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-            </div>
+<!-- HTML dengan Bootstrap -->
+<button class="btn btn-primary" type="submit">Submit</button>
+           </div>
         </div>
     </form>
 </body>

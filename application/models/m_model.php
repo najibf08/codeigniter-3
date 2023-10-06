@@ -55,6 +55,7 @@ class M_model extends CI_Model
             return false;
         }
     }
+
     public function getDataPembayaran()
     {
         $this->db->select(
@@ -98,16 +99,6 @@ class M_model extends CI_Model
         }
     }
 
-    // public function getDataPembayaran() {
-    //     $this->db->select('pembayaran.id, pembayaran.jenis_pembayaran, pembayaran.total_pembayaran, siswa.nama_siswa, kelas.tingkat_kelas, kelas.jurusan_kelas');
-    //     $this->db->from('pembayaran');
-    //     $this->db->join('siswa', 'siswa.id_siswa = pembayaran.id_siswa', 'left');
-    //     $this->db->join('kelas', 'siswa.id_kelas = kelas.id', 'left');
-    //     $query = $this->db->get();
-    
-    //     return $query->result();
-    // }
-
     public function getKelasByTingkatJurusan($tingkat_kelas, $jurusan_kelas)
     {
         $this->db->select('id');
@@ -123,6 +114,21 @@ class M_model extends CI_Model
         }
     }
 
+    // Fungsi untuk mengambil nama mapel berdasarkan id_mapel
+    public function get_mapel_by_id($id_mapel)
+    {
+        // Gantilah 'mapel' dengan nama tabel mapel Anda
+        $this->db->select('nama_mapel');
+        $this->db->where('id', $id_mapel);
+        $query = $this->db->get('mapel');
+
+        // Periksa apakah query berhasil
+        if ($query->num_rows() > 0) {
+            return $query->row(); // Mengembalikan hasil query
+        } else {
+            return null; // Jika tidak ada data yang ditemukan
+        }
+    }
 }
 
 ?>

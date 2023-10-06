@@ -262,22 +262,18 @@ class Keuangan extends CI_Controller
             echo 'Invalid File';
         }
     }
-
     public function export_pembayaran()
-    {
-        $data['data_pembayaran'] = $this->m_model
-            ->get_data('pembayaran')
-            ->result();
-        $data['nama'] = 'pembayaran';
-        if ($this->uri->segment(3) == 'pdf') {
-            $this->load->library('pdf');
-            $this->pdf->load_view('keuangan/export_data_pembayaran', $data);
-            $this->pdf->render();
-            $this->pdf->stream('data_pembayaran.pdf', ['Attachment' => false]);
-        } else {
-            $this->load->view('keuangan/download_data_pembayaran', $data);
-        }
+{
+    $data['data_pembayaran'] = $this->m_model->get_data('pembayaran')->result();
+    $data['nama'] = 'pembayaran';
+    if ($this->segment(3) == "pdf") {
+        $this->load->library('pdf');
+        $this->pdf->load_view('keuangan/export_data_pembayaran', $data);
+        $this->pdf->render();
+        $this->pdf->stream("data_pembayaran.pdf", array("Attachment" => false));
+    }else{
+        $this->load->view('keuangan/download_data_pembayaran', $data);
     }
-
+}
 }
 ?>
